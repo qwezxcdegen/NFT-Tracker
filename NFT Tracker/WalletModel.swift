@@ -7,4 +7,9 @@
 
 import Foundation
 
-
+struct Wallet {
+    let walletAddress: String
+    let amountOfSol: Double?
+    let amountOfNFT: Int?
+    let worthOfNFT: Double?
+}

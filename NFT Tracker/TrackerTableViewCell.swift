@@ -8,5 +8,5 @@
 import UIKit
 
 class TrackerTableViewCell: UITableViewCell {
-    @IBOutlet weak var walletNameLabel: UILabel!
+    @IBOutlet weak var walletAddressLabel: UILabel!
 }
