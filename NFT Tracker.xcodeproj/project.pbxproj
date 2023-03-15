@@ -16,6 +16,7 @@
 		0761E46029BE2B86005A9FA1 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0761E45F29BE2B86005A9FA1 /* WalletModel.swift */; };
 		07B0396C29C22587007FA33F /* TrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B0396B29C22587007FA33F /* TrackerTableViewCell.swift */; };
 		07B0396E29C227B1007FA33F /* UIColor + hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B0396D29C227B1007FA33F /* UIColor + hex.swift */; };
+		07B0397029C2316B007FA33F /* TableVC + alertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B0396F29C2316B007FA33F /* TableVC + alertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0761E45F29BE2B86005A9FA1 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 		07B0396B29C22587007FA33F /* TrackerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewCell.swift; sourceTree = "<group>"; };
 		07B0396D29C227B1007FA33F /* UIColor + hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + hex.swift"; sourceTree = "<group>"; };
+		07B0396F29C2316B007FA33F /* TableVC + alertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableVC + alertController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				0761E44F29BE27B8005A9FA1 /* Main.storyboard */,
 				0761E45F29BE2B86005A9FA1 /* WalletModel.swift */,
 				0761E45D29BE2805005A9FA1 /* TrackerTableViewController.swift */,
+				07B0396F29C2316B007FA33F /* TableVC + alertController.swift */,
 				07B0396D29C227B1007FA33F /* UIColor + hex.swift */,
 				07B0396B29C22587007FA33F /* TrackerTableViewCell.swift */,
 				0761E45229BE27B9005A9FA1 /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 				07B0396E29C227B1007FA33F /* UIColor + hex.swift in Sources */,
 				07B0396C29C22587007FA33F /* TrackerTableViewCell.swift in Sources */,
 				0761E44A29BE27B8005A9FA1 /* AppDelegate.swift in Sources */,
+				07B0397029C2316B007FA33F /* TableVC + alertController.swift in Sources */,
 				0761E46029BE2B86005A9FA1 /* WalletModel.swift in Sources */,
 				0761E44C29BE27B8005A9FA1 /* SceneDelegate.swift in Sources */,
 			);

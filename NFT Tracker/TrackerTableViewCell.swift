@@ -9,4 +9,11 @@ import UIKit
 
 class TrackerTableViewCell: UITableViewCell {
     @IBOutlet weak var walletAddressLabel: UILabel!
+    
+    @IBOutlet weak var amountOfSolLabel: UILabel!
+    
+    @IBOutlet weak var amountOfNFTLabel: UILabel!
+    
+    @IBOutlet weak var NFTWorthLabel: UILabel!
+    
 }

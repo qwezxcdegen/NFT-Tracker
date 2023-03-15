@@ -36,9 +36,31 @@ class TrackerTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "walletCell", for: indexPath) as! TrackerTableViewCell
         
         cell.walletAddressLabel.text = wallets[indexPath.row].walletAddress
+        cell.amountOfSolLabel.text = String(describing: wallets[indexPath.row].amountOfSol!)
+        cell.amountOfNFTLabel.text = String(describing: wallets[indexPath.row].amountOfNFT!)
+        cell.NFTWorthLabel.text = String(describing: wallets[indexPath.row].worthOfNFT!)
+        
         cell.layer.cornerRadius = 15
-        cell.backgroundColor = UIColor(hex: 0x8C6DD7)
+        cell.layer.borderWidth = 1
+        cell.backgroundColor = UIColor(hex: 0x65A5D1)
+        
+        cell.separatorInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         return cell
     }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        116
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        presentAddAlertController(title: "qwe", message: "qwe", style: .alert) { name in
+            self.wallets.insert(Wallet(walletAddress: name, amountOfSol: 12, amountOfNFT: 12, worthOfNFT: 12), at: 0)
+            self.tableView.reloadData()
+        }
+    }
+    
 }
