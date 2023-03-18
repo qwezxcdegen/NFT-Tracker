@@ -14,7 +14,7 @@ struct Wallet: Decodable {
 }
 
 struct Result: Decodable {
-    let num_tokens: Int
+    let walletAddress: String
     let sol_balance: Double
     let num_nfts: Int
 }

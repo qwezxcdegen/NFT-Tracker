@@ -12,8 +12,16 @@ class TrackerTableViewController: UITableViewController {
     var wallets: [Result] = [
 //        Result(num_tokens: 1, sol_balance: 2, num_nfts: 3)
     ]
+    var walletAddr = ""
+    var walletBal = 0.0 {
+        didSet {
+            wallets.insert(Result(walletAddress: walletAddr, sol_balance: walletBal, num_nfts: walletNFTs), at: 0)
+            tableView.reloadData()
+        }
+    }
+    var walletNFTs = 0
     
-    let networkManager = NetworkTrackerManager()
+//    let networkManager = NetworkTrackerManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +45,10 @@ class TrackerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "walletCell", for: indexPath) as! TrackerTableViewCell
-        
-//        cell.walletAddressLabel.text = wallets[indexPath.row].walletAddress
-//        cell.amountOfSolLabel.text = String(describing: wallets[indexPath.row].amountOfSol!)
-//        cell.amountOfNFTLabel.text = String(describing: wallets[indexPath.row].amountOfNFT!)
-//        cell.NFTWorthLabel.text = String(describing: wallets[indexPath.row].worthOfNFT!)
-        
-        cell.walletAddressLabel.text = "qwe"
-        cell.amountOfNFTLabel.text = String(describing: wallets[indexPath.row].sol_balance)
-        cell.amountOfNFTLabel.text = "qwe"
-        cell.NFTWorthLabel.text = "qwe"
+
+        cell.walletAddressLabel.text = wallets[indexPath.row].walletAddress
+        cell.amountOfNFTLabel.text = String(describing: wallets[indexPath.row].num_nfts)
+        cell.amountOfSolLabel.text = String(describing: wallets[indexPath.row].sol_balance)
         
         cell.layer.cornerRadius = 15
         cell.layer.borderWidth = 1
@@ -65,45 +67,13 @@ class TrackerTableViewController: UITableViewController {
     
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        presentAddAlertController(title: "qwe", message: "qwe", style: .alert) { name in
-            DispatchQueue.main.async {
-                print(name)
-                let walletBal = self.fetchFromWallet(name)
-                self.wallets.insert(Result(num_tokens: 0, sol_balance: walletBal, num_nfts: 0), at: 0)
-//                self.wallets.insert(Wallet(walletAddress: name, amountOfSol: 12, amountOfNFT: 12, worthOfNFT: 12), at: 0)
-                self.tableView.reloadData()
-            }
+        presentAddAlertController(title: "Wallet address", message: nil, style: .alert) { address in
+            self.fetchWalletData(address)
+            self.tableView.reloadData()
+            print(self.wallets)
         }
+        self.tableView.reloadData()
+        print(self.wallets)
     }
     
-    
-    
-}
-
-extension TrackerTableViewController {
-    func fetchFromWallet(_ wallet: String) -> Double {
-        var walletBalance = 0.0
-        var request = URLRequest(url: URL(string: "https://api.shyft.to/sol/v1/wallet/get_portfolio?network=mainnet-beta&wallet=\(wallet)")!,timeoutInterval: Double.infinity)
-        request.addValue("-3iYNcRok7Gm4EMl", forHTTPHeaderField: "x-api-key")
-        
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data else {
-                print(String(describing: error))
-                return
-            }
-            print(String(data: data, encoding: .utf8)!)
-
-            do {
-                let walletData = try JSONDecoder().decode(Wallet.self, from: data)
-                walletBalance = walletData.result.sol_balance
-                self.wallets.insert(Result(num_tokens: 0, sol_balance: walletBalance, num_nfts: 0), at: 0)
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        }
-        task.resume()
-        return walletBalance
-    }
 }
